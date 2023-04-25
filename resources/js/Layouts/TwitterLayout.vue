@@ -13,6 +13,8 @@
     import Emoticon from 'vue-material-design-icons/Emoticon.vue';
     import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
     import MenuItem from '@/Components/MenuItem.vue';
+
+    let randImg2 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}/100`)
 </script>
 
 <template>
@@ -85,8 +87,58 @@
                         placeholder="Search Twitter"
                     >
                 </div>
-            </div>
 
+                <div class="w-full mt-4 rounded-lg lg:block hidden bg-[#212327]">
+                   <div class="w-full p-4 text-white font-bold mb-6 text-[20px]">
+                       What's happening
+                   </div>
+
+                   <div class="h-[80px] hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
+                        <div class="flex p-3 justify-between h-[80px] py-3">
+                            <div>
+                                <div class="text-[14px] text-gray-400">Tennis Tournament LIVE</div>
+                                <div class="w-full text-white font-bold mb-6 text-[17px]">Australian Open 2023</div>
+                            </div>
+                            <img class="rounded-xl" :src="randImg2" alt="" />
+                        </div>
+                   </div>
+
+
+                    <div class="hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
+                        <div class="flex p-3 justify-between">
+                            <div>
+                                <div class="text-[14px] text-gray-400">Trending in United Kingdom</div>
+                                <div class="w-full text-white font-bold text-[17px]">Doomsday Clock</div>
+                                <div class="text-[14px] text-gray-400">5,923 Tweets</div>
+                            </div>
+                            <DotsHorizontal fillColor="#5e5c5c" />
+                        </div>
+                    </div>
+
+                    <div class="hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
+                        <div class="flex p-3 justify-between">
+                            <div>
+                                <div class="text-[14px] text-gray-400">Politics - Trending</div>
+                                <div class="w-full text-white font-bold text-[17px]">Sunak</div>
+                                <div class="text-[14px] text-gray-400">98,745 Tweets</div>
+                            </div>
+                            <DotsHorizontal fillColor="#5e5c5c" />
+                        </div>
+                    </div>
+
+                    <div class="hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
+                        <div class="flex p-3 justify-between">
+                            <div>
+                                <div class="text-[14px] text-gray-400">Sports - Trending</div>
+                                <div class="w-full text-white font-bold text-[17px]">Poro</div>
+                                <div class="text-[14px] text-gray-400">12,432 Tweets</div>
+                            </div>
+                            <DotsHorizontal fillColor="#5e5c5c" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </template>
