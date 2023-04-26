@@ -14,7 +14,16 @@
     import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
     import MenuItem from '@/Components/MenuItem.vue';
 
+    let createTweet = ref(false)
+    let textarea = ref(null)
+    let tweet = ref('')
+    let randImg1 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}/100`)
     let randImg2 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}/100`)
+
+    const textareaInput = (e) => {
+        textarea.value.style.height = "auto";
+        textarea.value.style.height = `${e.target.scrollHeight}px`;
+    }
 </script>
 
 <template>
@@ -136,7 +145,45 @@
                             <DotsHorizontal fillColor="#5e5c5c" />
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div id="OverlaySection" class="fixed top-0 left-0 w-full h-screen bg-black md:bg-gray-400 md:bg-opacity-30 md:p-3">
+        <div class="md:max-w-2xl md:mx-auto md:mt-10 md:rounded-xl bg-black">
+            <div class="flex items-center justify-between md:inline-block p-2 mt-2 rounded-full cursor-pointer">
+                <div class="hover:bg-gray-800 inline-block p-2 rounded-full cursor-pointer">
+                    <Close fillColor="#FFFFFF" :size="28" class="md:block hidden" />
+                    <ArrowLeft fillColor="#FFFFFF" :size="28" class="md:hidden block " />
+                </div>
+
+                <button
+                    :disabled="!tweet"
+                    :class="tweet ? 'bg-[#1C9CEF] text-white' : 'bg-[#124D77] text-gray-400'"
+                    class="md:hidden font-bold text-[16px] p-1.5 px-4 rounded-full cursor-pointer">
+                    Tweet
+                </button>
+            </div>
+
+            <div class="w-full flex">
+                <div class="ml-3.5 mr-2">
+                    <img class="rounded-full" width="55" :src="randImg1" />
+                </div>
+                <div class="w-[calc(100%-100px)]">
+                    <div class="inline-block">
+                        <div class="flex items-center border bg-gray-700 rounded-full">
+                            <span class="text-[#1C9CEF] p-0.5 pl-3.5 font-bold">Everyone</span>
+                            <ChevronDown class="pr-2" fillColor="#1C9CEF" :size="25" />
+                        </div>
+                    </div>
+                    <div>
+                        <textarea :oninput="textareaInput" cols="30" rows="4" placeholder="What's happening" v-model="tweet" ref="textarea"
+                            class="w-full bg-black border-0 mt-2 focus:ring-0 text-white text-[19px] font-bold min-h-[120px]"
+                        >
+
+                        </textarea>
+                    </div>
                 </div>
             </div>
         </div>
