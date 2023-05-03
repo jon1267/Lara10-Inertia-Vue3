@@ -9,5 +9,7 @@ use Inertia\Inertia;
 //    return Inertia::render('Welcome');
 //});
 Route::get('/', [\App\Http\Controllers\TweetController::class, 'index'])->name('tweets.index');
+Route::post('/tweets', [\App\Http\Controllers\TweetController::class, 'store'])->name('tweets.store');
+Route::delete('/tweets/{id}', [\App\Http\Controllers\TweetController::class, 'destroy'])->name('tweets.destroy');
 
 require __DIR__.'/auth.php';
