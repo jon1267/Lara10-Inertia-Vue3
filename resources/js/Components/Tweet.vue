@@ -28,6 +28,14 @@ let openOptions = ref(false);
                 <button type="button" class="block p-2">
                     <DotsHorizontal @click="openOptions = !openOptions" />
                 </button>
+                <div v-if="openOptions"
+                    class="absolute mt-1 p-3 right-0 w-[300px] bg-black border bg-gray-700 rounded-lg shadow-lg">
+                    <Link as="button" method="delete" :href="route('tweets.destroy', { id: tweet.id})"
+                        class="flex items-center cursor-pointer" >
+                        <TrashCanOutline class="pr-2" fillcolor="#DC2626" :size="18" />
+                        <span class="text-red-600 font-bold">Delete</span>
+                    </Link>
+                </div>
             </div>
         </div>
 

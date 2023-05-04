@@ -40,6 +40,19 @@
         textarea.value.style.height = "auto";
         textarea.value.style.height = `${e.target.scrollHeight}px`;
     }
+
+    const addTweet = () => {
+        if (!tweet.value) return
+
+        let data = new FormData()
+
+        data.append('tweet', tweet.value)
+        data.append('file', file.value)
+
+        router.post('/tweets', data)
+
+        closeMessageBox()
+    }
 </script>
 
 <template>
@@ -175,6 +188,7 @@
                 </div>
 
                 <button
+                    @click="addTweet()"
                     :disabled="!tweet"
                     :class="tweet ? 'bg-[#1C9CEF] text-white' : 'bg-[#124D77] text-gray-400'"
                     class="md:hidden font-bold text-[16px] p-1.5 px-4 rounded-full cursor-pointer">
@@ -194,14 +208,18 @@
                         </div>
                     </div>
                     <div>
-                        <textarea :oninput="textareaInput" cols="30" rows="4" placeholder="What's happening" v-model="tweet" ref="textarea"
+                        <textarea
+                            :oninput="textareaInput"
+                            cols="30"
+                            rows="4"
+                            placeholder="What's happening"
+                            v-model="tweet"
+                            ref="textarea"
                             class="w-full bg-black border-0 mt-2 focus:ring-0 text-white text-[19px] font-bold min-h-[120px]"
-                        >
-
-                        </textarea>
+                        ></textarea>
                     </div>
                     <div class="w-full">
-                        <video controls v-if="uploadType === 'mp.4'" :src="showUpload" class="rounded-xl overflow-auto" />
+                        <video controls v-if="uploadType === 'mp4'" :src="showUpload" class="rounded-xl overflow-auto" />
                         <img v-else :src="showUpload" class="rounded-xl min-w-full">
                     </div>
                     <div class="flex py-2 items-center text-[#1C9CEF] font-bold">
@@ -224,6 +242,7 @@
                             </div>
                         </div>
                         <button
+                            @click="addTweet()"
                             :disabled="!tweet"
                             :class="tweet ? 'bg-[#1C9CEF] text-white' : 'bg-[#124D77] text-gray-400'"
                             class="hidden md:block font-bold text-[16px] p-1.5 px-4 rounded-full cursor-pointer">
