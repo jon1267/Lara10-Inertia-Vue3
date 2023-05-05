@@ -33,8 +33,11 @@ let openOptions = ref(false);
                     <Link as="button" method="delete" :href="route('tweets.destroy', { id: tweet.id})"
                         class="flex items-center cursor-pointer" >
                         <TrashCanOutline class="pr-2" fillcolor="#DC2626" :size="18" />
-                        <span class="text-red-600 font-bold">Delete</span>
+                        <span class="text-red-600 hover:text-red-400 font-bold">Delete</span>
                     </Link>
+                    <button type="button" class="text-gray-400 hover:text-gray-200 pl-6 pt-2" @click="openOptions = false">
+                        Cancel
+                    </button>
                 </div>
             </div>
         </div>
